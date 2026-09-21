@@ -1,6 +1,6 @@
 #!/bin/sh
 # install_battery_dockapp.sh - install battery_dockapp into /usr/local/bin
-# Run as:  sudo ./install_battery_dockapp.sh   (from ~/bin)
+# Run as:  sudo ./install_battery_dockapp.sh
 
 set -e
 

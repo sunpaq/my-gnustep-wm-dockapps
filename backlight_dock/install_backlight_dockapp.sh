@@ -1,6 +1,6 @@
 #!/bin/sh
 # install.sh - install backlight_dockapp into /usr/local/bin
-# Run as:  sudo ./install_backlight_dockapp.sh   (from ~/bin)
+# Run as:  sudo ./install_backlight_dockapp.sh
 
 set -e
 

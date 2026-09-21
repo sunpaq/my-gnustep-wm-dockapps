@@ -63,7 +63,13 @@ All Objective-C dockapps follow the same pattern (pioneered in
   middle click re-reads or toggles; destructive or multi-step actions
   use a chooser/confirm-arming pattern (see `powerdock`).
 - One self-contained directory per dockapp: `Name.m` (+ `.h` when
-  split), a standalone `Makefile`, and an `install-*.sh` script.
+  split), a standalone `Makefile`, and an `install*.sh` script.
+- **Dockapp binary names must be pure ASCII and must not contain
+  hyphens (`-`); use underscores** (`clock_dockapp`, never
+  `clock-dockapp`). Window Maker's proplist parser cannot read
+  unquoted hyphenated values in `WMState`, so hyphenated names
+  silently break hand-maintained dock configs — wmaker fails to parse
+  the file, starts with an empty dock, and overwrites it on exit.
 
 ## Building
 
@@ -72,6 +78,12 @@ Requirements: `clang`, `gnustep-base`, `libobjc2`, X11 dev headers,
 
 - Each directory is **self-contained**. Build from inside it:
   `cd batterydock && gmake` (and likewise for the others).
+- Batch helpers at the repo root: `./build-all.sh` builds all six
+  dockapps (no root needed); `sudo ./install-all.sh` installs all six
+  into `/usr/local/bin` — `wifirescue_dock` setuid root, the rest 0755
+  root:wheel. Dockapp binaries live in `/usr/local/bin` **only**; the
+  Window Maker `autostart` launches them from there and there is no
+  per-user copy in `~/bin`.
 - Makefiles pull Objective-C flags from `gnustep-config --objc-flags`
   and `--base-libs` (sourcing `GNUstep.sh` first) and X11 flags from
   `pkg-config x11`. **Do not hard-code GNUstep include/lib paths** and

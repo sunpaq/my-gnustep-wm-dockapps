@@ -1,6 +1,6 @@
 #!/bin/sh
 # install.sh - install mixer_dockapp into /usr/local/bin
-# Run as:  sudo ./install_mixer_dockapp.sh   (from ~/bin)
+# Run as:  sudo ./install_mixer_dockapp.sh
 
 set -e
 

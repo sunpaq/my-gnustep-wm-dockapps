@@ -1,6 +1,6 @@
 #!/bin/sh
 # install.sh - install clock_dockapp into /usr/local/bin
-# Run as:  sudo ./install_clock_dockapp.sh   (from ~/bin)
+# Run as:  sudo ./install_clock_dockapp.sh
 
 set -e
 

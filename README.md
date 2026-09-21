@@ -46,6 +46,25 @@ cd batterydock && gmake     # likewise for the others
 ./battery_dockapp &         # then middle-mouse-drag the appicon onto the Dock
 ```
 
+Or batch-build everything and install it all into `/usr/local/bin`:
+
+```
+./build-all.sh              # builds all six dockapps (no root needed)
+sudo ./install-all.sh       # installs all six into /usr/local/bin
+                             # (wifirescue_dock setuid root, the rest 0755)
+```
+
+## Binary naming rule
+
+Dockapp binary names must be **pure ASCII** and must **not contain
+hyphens (`-`)** — use underscores instead (`clock_dockapp`, never
+`clock-dockapp`). Window Maker stores dock/clip state in `WMState`
+using its proplist format, whose parser cannot read unquoted
+hyphenated values: a hand-maintained config containing `clock-dockapp`
+silently fails to parse, wmaker then starts with an empty dock and
+overwrites the file on exit. Underscore names are safe in every config,
+hand-written or machine-written.
+
 `mixerdock` is plain C and even builds without GNUstep:
 
 ```
