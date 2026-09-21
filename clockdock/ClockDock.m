@@ -1,7 +1,7 @@
 /*
  * ClockDock.m — a Window Maker dock app written in Objective-C
  *
- * Objective-C refactor of clock-dockapp.c, modeled on the PowerDock
+ * Objective-C refactor of clock_dockapp.c, modeled on the PowerDock
  * project (same DockApp structure, event loop and drawing style).
  *
  * Shows the time in digit format in a 64x64 dockapp:
@@ -14,7 +14,7 @@
  *
  *   Left click (button 1): toggle 24h / 12h format
  *
- * Build:  gmake        Run:  ./clock-dockapp &
+ * Build:  gmake        Run:  ./clock_dockapp &
  *                             (then drag it onto the Window Maker dock)
  */
 
@@ -205,12 +205,12 @@ nowSeconds(void)
     XFree(wmh);
 
     XClassHint *ch = XAllocClassHint();
-    ch->res_name  = "clock-dockapp";
+    ch->res_name  = "clock_dockapp";
     ch->res_class = "DockApp";
     XSetClassHint(dpy, win, ch);
     XFree(ch);
 
-    XStoreName(dpy, win, "clock-dockapp");
+    XStoreName(dpy, win, "clock_dockapp");
 
     /* WM_DELETE_WINDOW so a WM delete notice quits cleanly */
     XSetWMProtocols(dpy, win,
@@ -451,7 +451,7 @@ main(int argc, char **argv)
 
     Display *dpy = XOpenDisplay(NULL);   /* honors $DISPLAY */
     if (dpy == NULL) {
-        fprintf(stderr, "clock-dockapp: cannot open display "
+        fprintf(stderr, "clock_dockapp: cannot open display "
                 "(is $DISPLAY set?)\n");
         [pool release];
         return 1;
@@ -475,7 +475,7 @@ main(int argc, char **argv)
 
         int r = select(xfd + 1, &fds, NULL, NULL, &tv);
         if (r < 0 && errno != EINTR) {
-            perror("clock-dockapp: select");
+            perror("clock_dockapp: select");
             break;
         }
 

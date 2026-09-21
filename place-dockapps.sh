@@ -5,13 +5,13 @@
 #
 # Why this exists
 # ---------------
-# The six dockapps (battery-dockapp, powerdock, backlight/mixer/clock-dockapp,
+# The six dockapps (battery_dockapp, powerdock, backlight/mixer/clock_dockapp,
 # wifirescue_dock) are un-docked WindowMaker appicons.  WindowMaker decides
 # which display's icon yard an appicon lands in from the position of the
 # app's window at the time the appicon is (re)created, and that placement
 # is self-reinforcing across WM restarts.  Because the dockapps are
 # launched at login *before* the final RandR layout is known (the external
-# HDMI monitor can take ~20 s to appear), battery-dockapp (formerly
+# HDMI monitor can take ~20 s to appear), battery_dockapp (formerly
 # wmbsdbatt) and wifirescue_dock ended up stranded in the builtin panel's
 # icon yard (top-left of the bottom display) instead of the external
 # display's top-left.
@@ -22,12 +22,12 @@
 # and at WM startup is enough.
 #
 # Canonical slots (head at (0,0); slot 0,0 left free for the Clip):
-#   64,0   battery-dockapp     (battery)
+#   64,0   battery_dockapp     (battery)
 #   128,0  powerdock           (power menu)
 #   192,0  wifirescue_dock      (wifi)
-#   256,0  backlight-dockapp   (brightness)
-#   320,0  mixer-dockapp       (volume)
-#   384,0  clock-dockapp       (clock)
+#   256,0  backlight_dockapp   (brightness)
+#   320,0  mixer_dockapp       (volume)
+#   384,0  clock_dockapp       (clock)
 #
 # Appicon window structure (from xwininfo -root -tree):
 #  - battery/powerdock/backlight/mixer/clock: the appicon IS the app's own
@@ -49,7 +49,7 @@ XMOVE="$HOME/bin/xmove"
 command -v xwininfo >/dev/null 2>&1 || exit 0
 
 # slot table: "appicon-name:size-filter:target-x:target-y", space separated
-SLOTS='battery-dockapp:64x64:64:0 PowerDock:64x64:128:0 wifirescue_dock:64x64:192:0 backlight-dockapp:64x64:256:0 mixer-dockapp:64x64:320:0 clock-dockapp:64x64:384:0'
+SLOTS='battery_dockapp:64x64:64:0 PowerDock:64x64:128:0 wifirescue_dock:64x64:192:0 backlight_dockapp:64x64:256:0 mixer_dockapp:64x64:320:0 clock_dockapp:64x64:384:0'
 
 # Scan a `xwininfo -root -tree` dump.  For each dockapp whose appicon is
 # not at its canonical x AND y, print:

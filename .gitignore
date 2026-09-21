@@ -1,0 +1,9 @@
+# build artifacts
+*.d
+*.o
+battery_dockapp
+backlight_dockapp
+clock_dockapp
+mixer_dockapp
+powerdock
+wifirescue_dock

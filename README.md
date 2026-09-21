@@ -15,12 +15,12 @@ Left to right: Workspace clip, **battery**, **power**, **wifi-rescue**,
 
 | Directory | Dockapp | Language | What it does |
 |-----------|---------|----------|--------------|
-| `batterydock/` | `battery-dockapp` | Objective-C | Battery charge %, lightning bolt on AC, red alert below 15 % while discharging. Reads ACPI sysctls directly. |
+| `batterydock/` | `battery_dockapp` | Objective-C | Battery charge %, lightning bolt on AC, red alert below 15 % while discharging. Reads ACPI sysctls directly. |
 | `powerdock/` | `powerdock` | Objective-C | Sleep / shutdown / reboot with a chooser popup and click-to-confirm arming. Auto-selects `systemctl`, `zzz`/`shutdown`, and a sudo/doas wrapper. ([docs](powerdock/README.md)) |
 | `wifirescue_dock/` | `wifirescue_dock` | Objective-C | Wi-Fi status tile (SSID / `RST` / `DOWN`); right-click runs `service netif restart <if>`. ([docs](wifirescue_dock/README.md)) |
-| `backlight_dock/` | `backlight-dockapp` | Objective-C | Screen brightness %; left/right click step down/up 10 %, middle click re-reads. Uses `backlight(8)`. |
+| `backlight_dock/` | `backlight_dockapp` | Objective-C | Screen brightness %; left/right click step down/up 10 %, middle click re-reads. Uses `backlight(8)`. |
 | `mixerdock/` | `mixerdock` | C | Volume % with speaker symbol and level bar; left/right click step down/up 10 %, middle click toggles mute. Uses `mixer(8)`. |
-| `clockdock/` | `clock-dockapp` | Objective-C | Weekday + HH:MM in hand-drawn 7-segment digits, seconds below; left click toggles 12 h/24 h. |
+| `clockdock/` | `clock_dockapp` | Objective-C | Weekday + HH:MM in hand-drawn 7-segment digits, seconds below; left click toggles 12 h/24 h. |
 
 All of the Objective-C apps share the same design (pioneered in
 `powerdock`): the 64×64 window registers itself with `WithdrawnState` +
@@ -43,13 +43,13 @@ needed:
 
 ```
 cd batterydock && gmake     # likewise for the others
-./battery-dockapp &         # then middle-mouse-drag the appicon onto the Dock
+./battery_dockapp &         # then middle-mouse-drag the appicon onto the Dock
 ```
 
 `mixerdock` is plain C and even builds without GNUstep:
 
 ```
-cd mixerdock && cc -O2 -o mixer-dockapp mixer-dockapp.c -lX11
+cd mixerdock && cc -O2 -o mixer_dockapp mixer_dockapp.c -lX11
 ```
 
 Most directories also ship an `install-*.sh` / `install.sh` script that
@@ -64,8 +64,8 @@ installs the binary (and, for `wifirescue_dock`, sets it setuid root).
   slot in the icon yard of the head containing `(0,0)`:
 
   ```
-  64,0 battery-dockapp   128,0 powerdock   192,0 wifirescue_dock
-  256,0 backlight-dockapp  320,0 mixer-dockapp  384,0 clock-dockapp
+  64,0 battery_dockapp   128,0 powerdock   192,0 wifirescue_dock
+  256,0 backlight_dockapp  320,0 mixer_dockapp  384,0 clock_dockapp
   ```
 
   This exists because dockapps launched at login can end up in the wrong

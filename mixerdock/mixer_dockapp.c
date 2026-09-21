@@ -1,5 +1,5 @@
 /*
- * mixer-dockapp.c - WindowMaker dock app for mixer(8)
+ * mixer_dockapp.c - WindowMaker dock app for mixer(8)
  *
  * Shows the current volume (vol control) as a percentage in a 64x64
  * dockapp, with a speaker symbol and a level bar.
@@ -7,9 +7,9 @@
  *   Right click (button 3): increase volume by 10%
  *   Middle click (button 2): toggle mute (bar turns gray while muted)
  *
- * Build:  cc -O2 -o mixer-dockapp mixer-dockapp.c \
+ * Build:  cc -O2 -o mixer_dockapp mixer_dockapp.c \
  *             -I/usr/local/include -L/usr/local/lib -lX11
- * Run:    ./mixer-dockapp &     (then drag it onto the WindowMaker dock)
+ * Run:    ./mixer_dockapp &     (then drag it onto the WindowMaker dock)
  */
 
 #include <X11/Xlib.h>
@@ -25,7 +25,7 @@
 #define STEP       10
 #define POLL_SEC   10   /* periodic refresh so external changes show up */
 
-/* Palette matching wm-wifi-rescue (same as backlight-dockapp) */
+/* Palette matching wm-wifi-rescue (same as backlight_dockapp) */
 #define COL_BG     "#202028"   /* dark charcoal */
 #define COL_GREEN  "#3ddc5a"   /* green         */
 #define COL_GRAY   "#9a9aa5"   /* gray border / muted bar */
@@ -110,7 +110,7 @@ int main(void)
 {
 	Display *dpy = XOpenDisplay(NULL);
 	if (!dpy) {
-		fprintf(stderr, "mixer-dockapp: cannot open display\n");
+		fprintf(stderr, "mixer_dockapp: cannot open display\n");
 		return 1;
 	}
 
@@ -122,7 +122,7 @@ int main(void)
 	    1, BlackPixel(dpy, screen), bg);
 
 	/* Look like a proper dockapp so WindowMaker can dock it */
-	XClassHint ch = { "mixer-dockapp", "DockApp" };
+	XClassHint ch = { "mixer_dockapp", "DockApp" };
 	XSetClassHint(dpy, win, &ch);
 
 	XWMHints hints;
@@ -135,7 +135,7 @@ int main(void)
 	XSetWMHints(dpy, win, &hints);
 
 	/* WM_NAME for identification */
-	XStoreName(dpy, win, "mixer-dockapp");
+	XStoreName(dpy, win, "mixer_dockapp");
 	XSetWMProtocols(dpy, win,
 	    &(Atom){ XInternAtom(dpy, "WM_DELETE_WINDOW", False) }, 1);
 

@@ -13,12 +13,12 @@ desktop and are **FreeBSD-first** (ACPI sysctls, `backlight(8)`,
 
 | Directory | Binary | Language |
 |-----------|--------|----------|
-| `batterydock/` | `battery-dockapp` | Objective-C |
+| `batterydock/` | `battery_dockapp` | Objective-C |
 | `powerdock/`   | `powerdock`       | Objective-C |
 | `wifirescue_dock/` | `wifirescue_dock` | Objective-C (multi-file: `main.m`, `DockView`, `WiFiController`) |
-| `backlight_dock/` | `backlight-dockapp` | Objective-C |
-| `clockdock/`   | `clock-dockapp`   | Objective-C |
-| `mixerdock/`   | `mixer-dockapp`   | plain C (no GNUstep) |
+| `backlight_dock/` | `backlight_dockapp` | Objective-C |
+| `clockdock/`   | `clock_dockapp`   | Objective-C |
+| `mixerdock/`   | `mixer_dockapp`   | plain C (no GNUstep) |
 
 ## Language & framework policy (important)
 
@@ -76,8 +76,8 @@ Requirements: `clang`, `gnustep-base`, `libobjc2`, X11 dev headers,
   and `--base-libs` (sourcing `GNUstep.sh` first) and X11 flags from
   `pkg-config x11`. **Do not hard-code GNUstep include/lib paths** and
   do not require the user to source `GNUstep.sh` themselves.
-- `mixerdock/` is the exception: `cc -O2 -o mixer-dockapp
-  mixer-dockapp.c -lX11` — no GNUstep.
+- `mixerdock/` is the exception: `cc -O2 -o mixer_dockapp
+  mixer_dockapp.c -lX11` — no GNUstep.
 - Test build with `gmake -C <dir>` after any change. There is no test
   suite; verify by compiling cleanly (no new warnings) and, when
   possible, running the binary (`./<binary> &`, then dock it by

@@ -1,6 +1,6 @@
 # ClockDock — Window Maker dock app in Objective-C
 #
-# Refactor of clock-dockapp.c, modeled on the PowerDock project.
+# Refactor of clock_dockapp.c, modeled on the PowerDock project.
 # Self-contained Makefile: pulls the GNUstep Foundation flags from
 # gnustep-config and links against X11.  Works with GNU make and BSD make.
 
@@ -13,7 +13,7 @@ X11_LIBS   := $(shell pkg-config --libs x11 2>/dev/null || echo -L/usr/local/lib
 
 CC  = clang
 SRC = ClockDock.m
-BIN = clock-dockapp
+BIN = clock_dockapp
 
 all: $(BIN)
 

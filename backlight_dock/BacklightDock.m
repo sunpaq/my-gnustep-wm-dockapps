@@ -1,7 +1,7 @@
 /*
  * BacklightDock.m — a Window Maker dock app written in Objective-C
  *
- * Objective-C refactor of backlight-dockapp.c, modeled on the PowerDock
+ * Objective-C refactor of backlight_dockapp.c, modeled on the PowerDock
  * project (same DockApp structure, event loop and drawing style).
  *
  * Shows the current screen brightness as a percentage in a 64x64 dockapp.
@@ -12,7 +12,7 @@
  * The brightness level is read from backlight(8); external changes are
  * picked up by a periodic poll (POLL_SEC) so the tile stays in sync.
  *
- * Build:  gmake        Run:  ./backlight-dockapp &
+ * Build:  gmake        Run:  ./backlight_dockapp &
  *                             (then drag it onto the Window Maker dock)
  */
 
@@ -236,12 +236,12 @@ nowSeconds(void)
     XFree(wmh);
 
     XClassHint *ch = XAllocClassHint();
-    ch->res_name  = "backlight-dockapp";
+    ch->res_name  = "backlight_dockapp";
     ch->res_class = "DockApp";
     XSetClassHint(dpy, win, ch);
     XFree(ch);
 
-    XStoreName(dpy, win, "backlight-dockapp");
+    XStoreName(dpy, win, "backlight_dockapp");
 
     /* WM_DELETE_WINDOW so a WM delete notice quits cleanly */
     XSetWMProtocols(dpy, win,
@@ -419,7 +419,7 @@ main(int argc, char **argv)
 
     Display *dpy = XOpenDisplay(NULL);   /* honors $DISPLAY */
     if (dpy == NULL) {
-        fprintf(stderr, "backlight-dockapp: cannot open display "
+        fprintf(stderr, "backlight_dockapp: cannot open display "
                 "(is $DISPLAY set?)\n");
         [pool release];
         return 1;
@@ -442,7 +442,7 @@ main(int argc, char **argv)
 
         int r = select(xfd + 1, &fds, NULL, NULL, &tv);
         if (r < 0 && errno != EINTR) {
-            perror("backlight-dockapp: select");
+            perror("backlight_dockapp: select");
             break;
         }
 

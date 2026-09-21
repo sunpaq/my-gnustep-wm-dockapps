@@ -1,7 +1,7 @@
 /*
  * BatteryDock.m — a Window Maker dock app written in Objective-C
  *
- * Objective-C refactor of battery-dockapp.c, modeled on the PowerDock
+ * Objective-C refactor of battery_dockapp.c, modeled on the PowerDock
  * project (same DockApp structure, event loop and drawing style).
  *
  * Shows the current battery charge as a percentage in a 64x64 dockapp.
@@ -15,7 +15,7 @@
  *   hw.acpi.battery.rate   0..n    mW being drawn/charged
  *   hw.acpi.acline         1 = on AC power
  *
- * Build:  gmake        Run:  ./battery-dockapp &
+ * Build:  gmake        Run:  ./battery_dockapp &
  *                             (then drag it onto the Window Maker dock)
  */
 
@@ -39,7 +39,7 @@
 #define LOW_PCT    15    /* red alert threshold when discharging */
 #define POLL_SEC   10.0  /* periodic refresh */
 
-/* Palette matching wm-wifi-rescue / backlight-dockapp */
+/* Palette matching wm-wifi-rescue / backlight_dockapp */
 #define COL_BG     "#202028"   /* dark charcoal */
 #define COL_GREEN  "#3ddc5a"   /* green         */
 #define COL_GRAY   "#9a9aa5"   /* gray border   */
@@ -195,12 +195,12 @@ nowSeconds(void)
     XFree(wmh);
 
     XClassHint *ch = XAllocClassHint();
-    ch->res_name  = "battery-dockapp";
+    ch->res_name  = "battery_dockapp";
     ch->res_class = "DockApp";
     XSetClassHint(dpy, win, ch);
     XFree(ch);
 
-    XStoreName(dpy, win, "battery-dockapp");
+    XStoreName(dpy, win, "battery_dockapp");
 
     /* WM_DELETE_WINDOW so a WM delete notice quits cleanly */
     XSetWMProtocols(dpy, win,
@@ -400,7 +400,7 @@ main(int argc, char **argv)
 
     Display *dpy = XOpenDisplay(NULL);   /* honors $DISPLAY */
     if (dpy == NULL) {
-        fprintf(stderr, "battery-dockapp: cannot open display "
+        fprintf(stderr, "battery_dockapp: cannot open display "
                 "(is $DISPLAY set?)\n");
         [pool release];
         return 1;
@@ -424,7 +424,7 @@ main(int argc, char **argv)
 
         int r = select(xfd + 1, &fds, NULL, NULL, &tv);
         if (r < 0 && errno != EINTR) {
-            perror("battery-dockapp: select");
+            perror("battery_dockapp: select");
             break;
         }
 

@@ -1,6 +1,6 @@
 # BacklightDock — Window Maker dock app in Objective-C
 #
-# Refactor of backlight-dockapp.c, modeled on the PowerDock project.
+# Refactor of backlight_dockapp.c, modeled on the PowerDock project.
 # Self-contained Makefile: pulls the GNUstep Foundation flags from
 # gnustep-config and links against X11.  Works with GNU make and BSD make.
 
@@ -13,7 +13,7 @@ X11_LIBS   := $(shell pkg-config --libs x11 2>/dev/null || echo -L/usr/local/lib
 
 CC  = clang
 SRC = BacklightDock.m
-BIN = backlight-dockapp
+BIN = backlight_dockapp
 
 all: $(BIN)
 

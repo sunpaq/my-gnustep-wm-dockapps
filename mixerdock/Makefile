@@ -8,8 +8,8 @@ X11_LIBS   = -L/usr/local/lib -lX11
 
 CC   ?= cc
 CFLAGS ?= -O2 -Wall
-SRC  = mixer-dockapp.c
-BIN  = mixer-dockapp
+SRC  = mixer_dockapp.c
+BIN  = mixer_dockapp
 
 all: $(BIN)
 
